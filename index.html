@@ -133,16 +133,21 @@ return edgeItems.concat(inner);
 let items=[],active=[],started=false,frame=0,startTime=0,shimmerTimer=0;
 const BGC=[6/255,2/255,8/255],FLASH=[1,.78,.78];
 
-function drawText(p,x,y,color,shadow=false){
-ctx.font=font(p.size);
-ctx.textAlign='center';
-ctx.textBaseline='middle';
-if(shadow){
-ctx.fillStyle=BG;
-ctx.fillText(p.text,x+2,y+3);
-}
-ctx.fillStyle=color;
-ctx.fillText(p.text,x,y);
+function drawText(p,x,y,color,shadow=false) {
+  ctx.font=font(p.size);
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+
+  const canvasX=x+400;
+  const canvasY=y+400;
+
+  if(shadow){
+    ctx.fillStyle=BG;
+    ctx.fillText(p.text,canvasX+2,canvasY+3);
+  }
+
+  ctx.fillStyle=color;
+  ctx.fillText(p.text,canvasX,canvasY);
 }
 
 function paint(now){
